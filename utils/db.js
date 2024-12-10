@@ -7,7 +7,6 @@ class DBClient {
     this.DB_DATABASE = process.env.DB_DATABASE || 'files_manager';
     this.db = null;
     this.connected = false;
-
   }
 
   async connect() {

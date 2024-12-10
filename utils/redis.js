@@ -7,7 +7,7 @@ class RedisClient {
   }
 
   isAlive() {
-    return this.client.connected;
+    return this.client && this.client.connected;
   }
 
   async get(key) {
@@ -23,7 +23,7 @@ class RedisClient {
 
   async set(key, value, duration) {
     try {
-      await this.client.set(key, value, { EX: duration});
+      await this.client.set(key, value, 'EX', duration);
       return true;
     } catch (err) {
       console.error('Error setting key:', key, err);
